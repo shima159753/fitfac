@@ -1,0 +1,134 @@
+<div class="contents row">
+  <div class="container">
+    <h2>出店登録</h2>
+    <%= form_with(model:@facilite, local: true) do |f| %>
+
+
+    <div class="form-group">
+      <div class="field">
+        出品画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">店舗名</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :name,  class:"input-default", placeholder:"", placeholder:"例）新宿店" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">郵便番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+       <%= f.text_field :postal_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+     <div class="weight-bold-text">
+          発送元の地域
+          <span class="indispensable">必須</span>
+     </div>
+     <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"input-default", id:"item-prefecture"}) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">市区町村</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :city,  class:"input-default", placeholder:"例）横浜市緑区" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">番地</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :address,  class:"input-default", placeholder:"例）青山1-1-1" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">建物名</label>
+        </div>
+        <%= f.text_field :building_name,  class:"input-default", placeholder:"例）青山1-1-1" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">料金説明</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :price, class:"input-default", placeholder:"例）1,500円/H" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">営業時間</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :bus_hours, class:"input-default", placeholder:"例）10:00-22:00 or 24時間営業" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">施設説明</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :text, class:"input-default-area", placeholder:"例）個人専用ジムです" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">施設アイテム</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :item, class:"input-default-area", placeholder:"例）フリーウエイト1台　ダンベル10〜20kg 2kg毎" %>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">注意事項</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :caution, class:"input-default-area", placeholder:"例）シャワーはありません" %>
+      </div>
+    </div>
+
+      <div class="sign-up">
+        <%= f.submit "施設を登録する",class:"sign-up-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

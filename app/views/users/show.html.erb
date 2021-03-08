@@ -1,0 +1,150 @@
+<div class="facility-show">
+  <div class="facility-box-show">
+      <div class="facility-show-name">
+         <strong><%=@nickname%></strong>
+      </div>
+
+  <table class="detail-table-show">
+      <tbody>
+        <tr>
+          <th class="detail-fac">ニックネーム</th>
+          <td class="detail-value"><%= @nickname %> </td>
+        </tr>
+        <tr>
+          <th class="detail-fac">登録アドレス</th>
+          <td class="detail-value"><%= @email %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="edit-destroy">
+      <%= link_to "ユーザー情報編集", edit_user_registration_path, method: :get, class: "edit-btn" %>
+    </div>
+
+      <table class="detail-table-show">
+      <tbody>
+        <tr>
+          <th class="detail-fac">カード番号</th>
+          <td class="detail-value"><%= "**** **** **** " + @card[:last4] %> </td>
+        </tr>
+        <tr>
+          <th class="detail-fac">有効期限</th>
+          <td class="detail-value"><%= @card[:exp_month] %>/<%= @card[:exp_year] %></td>
+        </tr>
+      </tbody>
+    </table>
+
+        <div class="edit-destroy">
+      <%= link_to "クレジットカード情報編集", edit_user_card_path(current_user.id,@cards.id), method: :get, class: "edit-btn" %>
+       </div>
+</div>
+
+  <div class="facility-resavation">
+    <strong>お気に入り</strong>
+  </div>
+   <div class="facility-list">
+
+   <% if Good.where(user_id: current_user.id).count > 0 %>
+    <% @good.each do |good| %>
+    <% post = Post.find_by(id: good.post_id) %>
+     <% goods_count = Good.where(post_id: post.id).count %>
+      <ul class="fac-list">
+        <li class="facility-contents-text">
+        <div class="facility-image">
+          <%= link_to image_tag(post.image, class:"gym1-image" ) , post_path(post.id) %>
+        <div class="facility-body">
+        <%= link_to post.name, post_path(post.id), class:"facility-title"%>
+        <%= link_to post.text, post_path(post.id),  class:"facility-copy"%>
+        <%= link_to post_path(post.id),  class:"facility-good" do%>
+          <a class="good-count-index"><%= goods_count %></a>
+          <span class="fas fa-thumbs-up my-orange my-index"><a></a></span>
+      <% end %>
+        </div>
+      </div>
+      </li>
+    </ul>
+    <% end %>
+      <% else %>
+    <p class="non-contents">現在お気に入りの登録はありません</p>
+  <% end %>
+  </div>
+
+  <div class="facility-resavation">
+    <strong>申込済予約枠</strong>
+  </div>
+
+  <div class="facility-list">
+        <% if @book_orders.where(user_id: current_user.id).count == 0 || @books.where(start_time: Time.now..Float::INFINITY ).count == 0  || (BookOrder.where(user_id: current_user.id).pluck(:book_id) & @books.where(start_time: Time.now..Float::INFINITY ).pluck(:id)).empty?  %>
+           <p class="non-contents">現在申し込み済のご予約はありません</p>
+        <% else %>
+     <% @book_orders.each do |book_order| %>
+      <% if book_order.user_id == current_user.id && book_order.book.end_time.to_s(:datetime_jp) > Time.now.to_s(:datetime_jp) %>
+        <ul class="fac-list">
+          <li class="facility-contents">
+                <%= link_to post_path(book_order.book.post_id), class:"book-btn-detail" do %>
+                <div class="book-btn-finished-user">
+                <i ></i>
+                <% bobst = book_order.book.start_time%>
+                <% bobet = book_order.book.end_time%>
+                 <p class="start-end-time">
+                  <%= book_order.book.post.name %><br></p>
+                 
+                  <p class="start-end-monthday">
+                   <%= bobst.year.to_s(:datetime_jp) %>年
+                   <%= bobst.month.to_s(:datetime_jp) %>月
+                   <%= bobst.day.to_s(:datetime_jp) %>日<br></p>
+                  <p class="start-end-time">
+                    <%= bobst.hour.to_s(:datetime_jp) %>時<%= bobst.min.to_s(:datetime_jp) %>分~</p><br>
+
+                  <p class="start-end-monthday">
+                   <%= bobet.month.to_s(:datetime_jp) %>月
+                   <%= bobet.day.to_s(:datetime_jp) %>日<br></p>
+                 <p class="start-end-time">
+                   <%= bobet.hour.to_s(:datetime_jp) %>時<%= bobet.min.to_s(:datetime_jp) %>分</p><br>
+                  <p class="book-price-memo">
+                  ¥<%= book_order.book.price.to_s(:delimited) %><br><br>
+                  </div>
+                <% end %> 
+                <%if Time.now < book_order.book.start_time - 1.hours %>
+                <%= link_to order_destroy_post_book_path(book_order.book.post_id,book_order.book.id), method: :delete, data: {confirm: "予約枠を削除しますか？"}, class:"drop-down-one" do%> 
+              <ul class="detail-drop-down">
+                <li class="drop-down"> 予約枠取消・返金 </li>
+              </ul>
+              <% end %>
+              <% end %>
+        </li>
+      </ul>
+      <% end %>
+     <% end %>
+    <% end %>
+  </div>
+
+    <div class="facility-resavation">
+      <strong><%= "#{@nickname}さんの出店"%></strong>
+    </div>
+    
+   <div class="facility-list">
+      <% if @posts.where(user_id: current_user.id).count == 0 %>
+         <p class="non-contents">現在出店している施設はありません</p>
+       <% else %>
+    <% @posts.each do |post| %>
+     <% goods_count = Good.where(post_id: post.id).count %>
+      <ul class="fac-list">
+        <li class="facility-contents-text">
+        <div class="facility-image">
+          <%= link_to image_tag(post.image, class:"gym1-image" ) , post_path(post.id) %>
+        <div class="facility-body">
+        <%= link_to post.name, post_path(post.id), class:"facility-title"%>
+        <%= link_to post.text, post_path(post.id),  class:"facility-copy"%>
+        <%= link_to post_path(post.id),  class:"facility-good" do%>
+          <a class="good-count-index"><%= goods_count %></a>
+          <span class="fas fa-thumbs-up my-orange my-index"><a></a></span>
+      <% end %>
+        </div>
+      </div>
+      </li>
+    </ul>
+    <% end %>
+   <% end %>
+  </div>
+</div>

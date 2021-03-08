@@ -1,0 +1,69 @@
+<div class="main">
+  <div class="title-contents">
+      <div class="slider">
+        <%= link_to image_tag("top1.png", class:"top-contents"), "#" %>
+        <%= link_to image_tag("top2.png", class:"top-contents"), "#" %>
+      </div>
+  </div>
+  <div class="topics-title">
+  <strong>Topics</strong>
+  </div>
+  <table class="topics">
+    <tr>
+      <th class="topics-date">2021.02.15</th> 
+      <td class="topics-sentence"><a> 2月末までご利用でお得なキャンペーン実施中！ </a></td>
+    </tr>
+    <tr>
+      <th class="topics-date">2021.02.10</th> 
+      <td class="topics-sentence"><a> 緊急事態宣言の対応について </a></td>
+    </tr>
+    <tr>
+      <th class="topics-date">2021.02.08</th> 
+      <td class="topics-sentence"><a> 紹介キャンペーンのご案内 </a></td>
+    </tr>
+  </table>
+
+  <div>
+    <%= image_tag "banner1",class:"index-banner" %>
+    <%= image_tag "banner2",class:"index-banner" %>
+  </div>
+
+  <% if @posts.empty? %>
+  <div class="facility-list-title">
+     ログインして施設を投稿しよう
+  </div>
+
+  <% else %>
+
+  <div class="facility-list-title">
+    <strong>施設一覧</strong>
+  </div>
+  <div class="facility-table">
+  <div class="facility-list-index">
+  <% @posts.first(6).each do |post| %>
+    <% goods_count = Good.where(post_id: post.id).count %>
+    <ul class="fac-list">
+      <li class="facility-contents-text">
+      <div class="facility-image">
+        <%= link_to image_tag(post.image, class:"gym1-image" ) , post_path(post.id) %>
+      <div class="facility-body">
+      <%= link_to post.name, post_path(post.id), class:"facility-title"%>
+      <%= link_to post.text, post_path(post.id),  class:"facility-copy-text"%>
+      <%= link_to post_path(post.id),  class:"facility-good" do%>
+          <a class="good-count-index"><%= goods_count %></a>
+          <span class="fas fa-thumbs-up my-orange my-index"><a></a></span>
+      <% end %>
+      </div>
+     </div>
+    </li>
+  </ul>
+   <% end %>
+  <% end %>
+   </div>
+       <div class="fac-table">
+          <p class="table-btn"><%= link_to search_posts_path do %>
+              <button class="table-btn">一覧を見る</button>
+            <% end %></p>
+        </div>
+  </div>
+</div>

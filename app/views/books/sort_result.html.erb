@@ -1,0 +1,47 @@
+   <div class="resavation-delete">
+    <strong>予約済枠削除・返金</strong>
+  </div>
+<div class="facility-table-sort">
+  <%= form_with(url: sort_result_post_books_path,  method: :get, local: true, class: "search-form-sort") do |f| %>
+
+    <%= f.select :sortword,[
+      ["新しい日付順","new"],
+      ["古い日付順","old"],], class: "input-box-sort"%>
+
+     <%= f.submit "並び替える", class:"sort-box" %>
+   <% end %>
+
+  <div class="facility-list">
+    <% @book.each do |book| %>
+     <% if book.book_order != nil && book.post_id == @post.id %>
+        <ul class="fac-list">
+          <li class="facility-contents">
+            <div class="book-btn-finished" >
+           <%= link_to order_destroy_post_book_path(book.post_id,book.id), method: :delete, data: {confirm: "予約枠を削除しますか？"}, class:"book-btn-detail" do %>
+              <% bst = book.start_time %>
+              <% est = book.end_time %>
+               <p class="start-end-monthday">
+                <%= bst.year.to_s(:datetime_jp) %>年
+                <%= bst.month.to_s(:datetime_jp) %>月
+                <%= bst.day.to_s(:datetime_jp) %>日<br></p>
+                <p class="start-end-time">
+                <%= bst.hour.to_s(:datetime_jp) %>時<%= bst.min.to_s(:datetime_jp) %>分~</p><br>
+       
+               <p class="start-end-monthday">
+                <%= est.month.to_s(:datetime_jp) %>月
+                <%= est.day.to_s(:datetime_jp) %>日<br></p>
+                <p class="start-end-time">
+                <%= est.hour.to_s(:datetime_jp) %>時<%= est.min.to_s(:datetime_jp) %>分</p><br>
+                <p class="book-price-memo">
+                ¥<%= book.price.to_s(:delimited) %><br>
+             <% end %> 
+            </div>
+          </li>
+        </ul>
+        <% end %>
+    <% end %>
+  </div>
+  <div class="paginate">
+    <%= paginate @book %>
+  </div>
+</div>

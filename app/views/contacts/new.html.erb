@@ -1,0 +1,30 @@
+  
+    
+  <div id="contact-form-new">
+   <div class="form-group">
+      <div class="field">
+        <h2>お問い合わせフォーム</h2>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="field">
+         <%= form_with(model:@contact,url: contacts_create_path, local: true) do |f| %>
+           <%= render 'shared/error_messages', model: f.object %> 
+            <%= f.label :お名前%><br>
+            <%= f.text_field :name, class:"input-default",placeholder:"お名前をご記入下さい" %><br>
+       </div>
+    </div>
+
+     <div class="form-group">
+      <div class="field">
+            <%= f.label :お問い合わせ内容%><br>
+            <%= f.text_area :message,class:"input-default-area-contact",placeholder:"お問い合わせ内容をご記入下さい"%><br>
+      </div>
+    </div>
+
+            <div class="sign-up">
+              <%= f.submit "送信",class:"sign-up-btn"%>
+           </div>
+          <% end %>
+      </div>

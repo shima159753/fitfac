@@ -1,0 +1,159 @@
+<div class="contents row">
+  <div class="container">
+    <h2>出店登録</h2>
+    <%= form_with(model:@post, local: true) do |f| %>
+     <%= render 'shared/error_messages', model: f.object %> 
+
+    <div class="form-group">
+      <div class="field">
+        店舗メイン画像（1枚）
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        店舗サブ画像（複数投稿可）
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックして複数ファイルを選択し<br>アップロード
+        </p>
+          <%= f.file_field :images ,multiple: true, id:"item-image" %>
+      </div>
+        <% if @post.images.attached? %>
+          <% @post.images.each do |image| %>
+            <%= image_tag image.variant(resize: "150x150") %>
+          <% end %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">店舗名（10文字以内）</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :name,  class:"input-default", placeholder:"", placeholder:"例）新宿店" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">郵便番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+       <%= f.text_field :postal_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">都道府県</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :prefecture,  class:"input-default", placeholder:"例）東京都" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">市区町村</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :city,  class:"input-default", placeholder:"例）横浜市緑区" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">番地</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :address,  class:"input-default", placeholder:"例）青山1-1-1" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">建物名</label>
+        </div>
+        <%= f.text_field :building_name,  class:"input-default", placeholder:"例）ビル101" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">料金説明</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :price, class:"input-default", placeholder:"例）1,500円/Hなど料金の詳細説明を記載", maxlength:"50" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">営業時間説明</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :bus_hours, class:"input-default", placeholder:"例）10:00-22:00 or 24時間営業", maxlength:"50" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">施設説明</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :text, class:"input-default-area", placeholder:"例）個人専用ジム・貸しテレワークルームetc.." %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">施設アイテム</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :item, class:"input-default-area", placeholder:"例）フリーウエイト1台,ダンベル10〜20kg 2kg毎" %>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">注意事項</label>
+        </div>
+        <%= f.text_area :caution, class:"input-default-area", placeholder:"例）シャワーはありません" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">YoutubeId入力（動画URLの「=」以降のID入力で動画が埋め込まれます）</label>
+        </div>
+        <%= f.text_field :youtube_id,  class:"input-default", placeholder:"例）2b2gJu-g3qE" %>
+      </div>
+    </div>
+
+      <div class="sign-up">
+        <%= f.submit "施設を登録する",class:"sign-up-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

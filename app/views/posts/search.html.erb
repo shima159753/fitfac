@@ -1,0 +1,21 @@
+<div class="facility-table-sort">
+  <%= form_with(model:@post, url: sort_posts_path,  method: :get, local: true, class: "search-form-sort") do |f| %>
+
+
+    <%= f.select :sortword,[
+      ["投稿が新しい順","new"],
+      ["投稿が古い順","old"],
+      ["いいねが多い順","likes"],], class: "input-box-sort"%>
+
+     <%= f.submit "並び替える", class:"sort-box" %>
+
+  <% end %>
+  <div class="facility-list">
+    <% @posts.each do |post| %>
+      <%= render partial: "post", locals: { post: post } %>
+    <% end %>
+  </div>
+  <div class="paginate">
+    <%= paginate @posts %>
+  </div>
+</div>

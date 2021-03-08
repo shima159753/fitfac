@@ -1,0 +1,84 @@
+<div class="contents row">
+  <div class="container">
+    <h2>ユーザー情報変更</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <div class="field">
+            <div class='form-text-wrap'>
+              <label class="form-text">ニックネーム</label>
+              
+            </div>
+        <%= f.text_area :nickname, autofocus: true, autocomplete: "nickname",class:"input-default" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+            <div class='form-text-wrap'>
+              <label class="form-text">Email</label>
+            </div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"input-default" %>
+      </div>
+    </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+     <div class="form-group">
+      <div class="field">
+            <div class='form-text-wrap'>
+              <label class="form-text">変更後パスワード<em>(<%= @minimum_password_length %> 文字以上)</em></label>
+              <span class="indispensable">必須</span>
+            </div> <i>(変更が不要の場合は現在のパスワードを入力)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password" ,class:"input-default" %>
+        <% if @minimum_password_length %>
+          <br />
+          
+        <% end %>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="field">
+            <div class='form-text-wrap'>
+              <label class="form-text">確認パスワード再入力</label>
+              <span class="indispensable">必須</span>
+            </div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"input-default" %>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="field">
+            <div class='form-text-wrap'>
+              <label class="form-text">現在のパスワード入力</label>
+              <span class="indispensable">必須</span>
+            </div> <i>(変更を完了する為、現在のパスワードを入力して下さい)</i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password" ,class:"input-default"%>
+      </div>
+     </div>
+
+     <div class="form-group">
+          <div class="field">
+            <div class="actions">
+              <%= f.submit "更新", class: "registration-edit-btn" %>
+            </div>
+        <% end %>
+       </div>
+     </div>
+
+<div class="form-group">
+    <div class="field">
+    <h3>アカウントの取り消し</h3><i>(あなたのユーザー情報が削除されます)</i><br />
+    <p><%= button_to "ユーザーアカウントの削除", registration_path(resource_name), data: { confirm: "アカウントを削除します。よろしいですか?" }, method: :delete, class: "cancel-edit-btn" %></p>
+
+    <!--<%= link_to "Back", :back %>-->
+  </div>
+</div>
+
+  </div>
+</div>

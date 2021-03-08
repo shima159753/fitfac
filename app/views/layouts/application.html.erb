@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fitfac</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+   <script src="https://js.pay.jp/" , type="text/javascript"></script>
+    <%= stylesheet_link_tag 'application', media: 'all'%>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <%= javascript_pack_tag 'application' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="header">
+      <div class='search-bar-contents'>
+        <%= link_to "RentSpace", root_path, class:"logo-icon"%>
+        <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "施設を探す", class: "input-box" %>
+          <button class="search-button">
+            <%= image_tag "search.png", class:"search-icon" %>
+          </button>
+        <% end %>
+      </div>
+      <div class='nav'>
+        <ul class='lists-right'>
+        <%= link_to "Home", root_path, class: "new-header" %>
+        <% if user_signed_in?%>
+         <%= link_to "New store", new_post_path, class: "new-header" %>
+         <%= link_to "My page", user_path(current_user.id), class: "new-header" %>
+         <%= link_to "Logout", destroy_user_session_path, class: "sign-out", method: :delete, data: {confirm: "ログアウトしますか？"} %>
+        <% else %>
+          <li><%= link_to 'Login', new_user_session_path, class: "login-header" %></li>
+          <li><%= link_to 'User registration', new_user_registration_path, class: "sign-up" %></li>
+        <% end %>
+        </ul>
+       </div>
+    </header>
+    <% if flash[:notice] %>
+     <div class="flash">
+     <%= flash[:notice]%>
+    </div>
+     <% end %>
+    <%= yield %>
+    <footer class="footer">
+      <div class="footer-content">
+        <ul class="footer-details">
+         <li><%= link_to "お問い合わせ", contacts_new_path, class: "footer-about" %></li>
+        <li> <%= link_to "Q&A", "#", class: "footer-about" , id:"contact-show"%></li>
+        </ul>
+
+        <div class="contact-modal-wrapper" id="contact-modal">
+          <div class="modal">
+            <div class="close-modal">
+              <i class="fa fa-2x fa-times "></i>
+            </div>
+
+              <div class="faq-wrapper">
+                    <div class="heading">
+                      <h2>Q&A</h2>
+                    </div>
+                    <div class="faq">
+                      <ul id="faq-list">
+                        <li class="faq-list-item">
+                          <h3 class="question">このサイトでは何ができるのですか？</h3>
+                          <span>+</span>
+                          <div class="answer">
+                            <p>空きスペースの貸し借りができます。貸す側は予約時間を作成し、公開することで予約枠を作成することができます。</p>
+                          </div>
+                        </li>
+                        <li class="faq-list-item">
+                          <h3 class="question">利用するには何が必要ですか？</h3>
+                          <span>+</span>
+                          <div class="answer">
+                            <p>クレジットカードが必要になります。ユーザー登録の際に必要になります。未登録の方でも各店舗の詳細をご覧頂けます。</p>
+                          </div>
+                        </li>
+                        <li class="faq-list-item">
+                          <h3 class="question">利用時の注意点はありますか？</h3>
+                          <span>+</span>
+                          <div class="answer">
+                            <p>各店舗詳細ページをご覧頂くと、詳細が記入しておりますのでご利用の際はご一読下さい。店舗出店者は注意書きの記入をお願い致します。</p>
+                          </div>
+                        </li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+
+      </div>
+      <div class="footer-content-copy">
+        <ul class="copyright">
+          <li class="copyright">Copyright (c) RentSpace All rights reserved.</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

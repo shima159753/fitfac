@@ -1,0 +1,194 @@
+<div class="facility-show">
+  <div class="facility-box-show">
+      <div class="facility-show-name">
+         <strong><%= @post.name %></strong>
+      </div>
+      <div class="fac-img-content">
+         <%=link_to image_tag(@post.image, class:"gym1-image-show") ,class:"fac-box-img" %>
+      </div>
+
+    <% if @post.images.blobs.present?  %>
+      <p>
+        <strong>店舗画像</strong>
+      <div class="slider-show">
+          <% @post.images.each do |image|%>
+            <%= image_tag(image, class:"slide-image")%>
+          <% end %>
+      </div>
+      </p>
+    <% end %>
+
+
+
+    <% if @post.youtube_id.present? %>
+      <div style="position: relative; padding-bottom: 56.25%;">
+        <iframe 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+          src="https://www.youtube.com/embed/<%= @post.youtube_id %>" 
+          frameborder="0" 
+          allow="autoplay; 
+          encrypted-media" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <% end %>
+
+      <%if user_signed_in? && current_user.id != @post.user_id %>
+      <% if Good.find_by(user_id: current_user.id, post_id: @post.id)  %>
+        <%= link_to "/goods/#{@post.id}/destroy",method: :post do %>
+          <span class="fas fa-thumbs-up my-orange"><a></a></span></a>
+          <a class="good-count"><%= @goods_count %></a>
+        <% end %>
+      <% else%>
+        <%= link_to "/goods/#{@post.id}/create", method: :post do %>
+            <span class="fas fa-thumbs-up my-lightgray"><a></a></span>
+           <a class="good-count"><%= @goods_count %></a>
+        <% end %>
+      <% end %>
+        <% else %>
+          <span class="fas fa-thumbs-up my-orange"><a></a></span></a>
+          <a class="good-count"><%= @goods_count %></a>
+      <% end %>
+      
+
+      
+
+       <% if user_signed_in? && current_user.id == @post.user_id %>
+        <div class="edit-destroy">
+          <%= link_to "予約枠作成/削除", new_post_book_path(@post.id), method: :get, class: "show-edit-btn" %>
+          <%= link_to "編集", edit_post_path(@post.id), method: :get, class: "show-edit-btn" %>
+          <%= link_to "削除", post_path(@post.id), method: :delete, class:"destroy-botton", data: {confirm: "店舗情報を削除しますか？"} %>
+        </div>
+      <% end %>
+  </div>
+  
+  <table ~~~ class="detail-table-show">
+      <tbody>
+        <tr>
+          <th class="detail-fac">住所</th>
+          <td class="detail-value"><%= @post.prefecture+@post.city+@post.address+@post.building_name %> </td>
+        </tr>
+        <tr>
+          <th class="detail-fac">料金</th>
+          <td class="detail-value"><%= @post.price %></td>
+        </tr>
+        <tr>
+          <th class="detail-fac">営業時間</th>
+          <td class="detail-value"><%= @post.bus_hours %></td>
+        </tr>
+        <tr>
+          <th class="detail-fac">施設説明</th>
+          <td class="detail-value"> <%= @post.text %></td>
+        </tr>
+        <tr>
+          <th class="detail-fac">アイテム</th>
+          <td class="detail-value"><%= @post.item %> </td>
+        </tr>
+        <% if @post.caution != "" %>
+        <tr>
+          <th class="detail-fac">注意事項</th>
+          <td class="detail-value"> <%= @post.caution %> </td>
+        </tr>
+       <% end  %>
+      </tbody>
+    </table>
+ <% if user_signed_in?  &&  current_user.id == @post.user_id %>
+    <div class="facility-resavation">
+      <strong>現在の予約可能枠</strong>
+    </div>
+    <div class="facility-list">
+    <% if @books.where(post_id: @post.id).count == 0 || @books.where(start_time: Time.now..Float::INFINITY ).count != 0 && @book_order.where(book_id: @book) == nil || (@book_orders & (@books.where(start_time: Time.now..Float::INFINITY ).ids)).count == ((@books.where(start_time: Time.now..Float::INFINITY ).ids)).count ||  @books.where(start_time: Time.now..Float::INFINITY ).count == 0 %>
+       <p class="non-contents">現在ご予約可能な枠はありません</p>
+    <% else %>
+    <% @books.each do |book| %>
+     <% if book.book_order == nil && Time.now.to_s(:datetime_jp) < book.start_time.to_s(:datetime_jp)%>
+      <ul class="fac-list">
+        <li class="facility-contents">
+          <div class="book-btn">
+              <div class="book-btn-detail"> 
+              <i ></i>
+              <% bst = book.start_time %>
+              <% est = book.end_time %>
+               <a class="start-end-monthday">
+                <%= bst.year.to_s(:datetime_jp) %>年
+                <%= bst.month.to_s(:datetime_jp) %>月
+                <%= bst.day.to_s(:datetime_jp) %>日<br></a>
+                <a class="start-end-time">
+                <%= bst.hour.to_s(:datetime_jp) %>時<%= bst.min.to_s(:datetime_jp) %>分~</a><br>
+
+               <a class="start-end-monthday">
+                <%= est.month.to_s(:datetime_jp) %>月
+                <%= est.day.to_s(:datetime_jp) %>日<br></a>
+                <a class="start-end-time">
+                <%= est.hour.to_s(:datetime_jp) %>時<%= est.min.to_s(:datetime_jp) %>分</a><br>
+                <a class="book-price-memo">
+                ¥<%= book.price.to_s(:delimited) %><br>
+                <%= book.memo %></a>
+                </div>
+          </div>
+      </li>
+    </ul>
+     <% end %>
+    <% end %> 
+     <% end %> 
+    </div>
+
+    <div class="facility-resavation">
+      <strong>予約完了枠</strong>
+    </div>
+    <div class="facility-list">
+
+  <div class="fac-table">
+    <p class="table-btn"><%= link_to sort_post_books_path(@post.id) do %>
+        <button class="table-btn">予約済一覧を見る</button>
+      <% end %></p>
+  </div>
+
+    </div>
+   <% elsif user_signed_in? %>
+     <div class="facility-resavation">
+    <strong>ご利用のご予約はこちらから</strong>
+  </div>
+  <div class="facility-list">
+    <% if @books.where(post_id: @post.id).count == 0 || @books.where(start_time: Time.now..Float::INFINITY ).count != 0 && @book_order.where(book_id: @book) == nil || (@book_orders & (@books.where(start_time: Time.now..Float::INFINITY ).ids)).count == ((@books.where(start_time: Time.now..Float::INFINITY ).ids)).count ||  @books.where(start_time: Time.now..Float::INFINITY ).count == 0 %> 
+       <p class="non-contents">現在ご予約可能な枠はありません</p>
+    <% else %>
+  <% @books.each do |book| %>
+  <% if book.book_order == nil && Time.now.to_s(:datetime_jp) < book.start_time.to_s(:datetime_jp) %>
+    <ul class="fac-list">
+      <li class="facility-contents">
+            <%= link_to post_book_path(book.post_id,book.id), class:"book-btn-detail" do %>
+             <div class="book-btn-link">
+             <i ></i>
+              <% bst = book.start_time %>
+              <% est = book.end_time %>
+               <p class="start-end-monthday">
+                <%= bst.year.to_s(:datetime_jp) %>年
+                <%= bst.month.to_s(:datetime_jp) %>月
+                <%= bst.day.to_s(:datetime_jp) %>日<br></p>
+                <p class="start-end-time">
+                <%= bst.hour.to_s(:datetime_jp) %>時<%= bst.min.to_s(:datetime_jp) %>分~</p><br>
+
+               <p class="start-end-monthday">
+                <%= est.month.to_s(:datetime_jp) %>月
+                <%= est.day.to_s(:datetime_jp) %>日<br></p>
+                <p class="start-end-time">
+                <%= est.hour.to_s(:datetime_jp) %>時<%= est.min.to_s(:datetime_jp) %>分</p><br>
+                <p class="book-price-memo">
+                ¥<%= book.price.to_s(:delimited) %><br>
+                <!--<%= book.memo %>--></p>
+              </div>
+            <% end %> 
+     </li>
+   </ul>
+   <% end %>
+   <% end %>
+   </div>
+  <% end %>
+   <% else %>
+     <div class="facility-resavation">
+    会員登録後、ご予約頂けます
+  </div>
+  <% end %>
+</div>
+</div>
