@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :show, :update, :destroy, :likes, :move_to_index]
   before_action :authenticate_user!, except: [:index, :show, :search, :sort]
-  before_action :move_to_index, except: [:index, :show, :search, :sort]
+  before_action :move_to_index, except: [:index, :show, :search, :sort,:new,:create]
 
   def index
     @post = Post.find_by(params[:id])
