@@ -1,0 +1,32 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+       birth_day: 誕生日
+     post:
+       name: 店舗名
+       image: 画像
+       postal_code: 郵便番号
+       prefecture: 都道府県
+       city: 市区町村
+       address: 番地
+       building_name: 建物名
+       price: 料金説明
+       bus_hours: 営業時間
+       text: 施設説明
+       item: 施設アイテム
+       caution: 注意事項
+       youtube_id: Youtube id
+     book:
+       start_time: 開始時間
+       end_time: 終了時間
+       price: 料金（円）
+       memo: メモ
+     card:
+       card_token: カード
+       customer_token: カスタマー情報
+       customercard_token: カード情報
+     contact:
+       name: 名前
+       message: お問い合わせ内容
