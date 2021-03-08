@@ -1,0 +1,292 @@
+.facility-box-show{
+  font-size: 35px;
+  text-align: center;
+  width: 100vw;
+  padding: 2vh 15vw;
+  color: #660000;
+}
+
+.facility-show-name{
+  text-align: center;
+}
+.gym1-image-show{
+  width: 60vw;
+}
+
+.detail-table-show {
+  margin-bottom: 30px;
+  width: 100%;
+  padding: 2vh 5vw;
+  margin: auto;
+}
+
+.detail-fac {
+  width: 20vw;
+  background-color: #deb887;
+  border: 1px solid #deb887;
+  font-size: 14px;
+  text-align: center;
+}
+
+.detail-value {
+  width: 80vw;
+  padding: 20px;
+  border: 1px solid #deb887;
+  font-size: 14px;
+  overflow-wrap:break-word;
+}
+
+
+.facility-resavation{
+  padding: 2vh 15vw;
+  background-image: url("back3.png");
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  width: 100vw;
+}
+
+.edit-destroy{
+  display: flex;
+  width: 70%;
+  margin: 20px auto;
+  justify-content:space-around;
+}
+
+.show-edit-btn {
+  width: 100%;
+  background: #2c7cff;
+  border: 1px solid #2c7cff;
+  color: #fff;
+  line-height: 48px;
+  cursor: pointer;
+  border-radius : 10px;
+  padding: 3px 8px;
+  text-decoration: none;
+  margin-right: 3vw;
+  font-size: 1.5vw;
+  transition: all .2s ease-in-out;
+}
+
+.show-edit-btn:hover {
+  background: #fff;
+  color: #2c7cff;
+  transition: all .2s ease-in-out;
+}
+
+.edit-btn {
+  width: 100%;
+  background: #2c7cff;
+  border: 1px solid #2c7cff;
+  color: #fff;
+  line-height: 48px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius : 10px;
+  padding: 3px 8px;
+  text-decoration: none;
+  font-size: 1.5vw;
+  transition: all .2s ease-in-out;
+}
+
+.edit-btn:hover {
+  background: #fff;
+  color: #2c7cff;
+  transition: all .2s ease-in-out;
+}
+
+.destroy-botton {
+  width: 100%;
+  background: #cccccc;
+  border: 1px solid #cccccc;
+  color: #000000;
+  line-height: 48px;
+  cursor: pointer;
+  border-radius : 10px;
+  padding: 3px 8px;
+  text-decoration: none;
+  font-size: 1.5vw;
+}
+
+.destroy-botton:hover {
+  background: #fff;
+  color: #000000;
+  transition: all .2s ease-in-out;
+}
+
+.book-btn {
+  width: 100%;
+  background-image: url("maru2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  line-height: 3vw;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius : 10px;
+  padding: 1vw;
+  color: #fff;
+  transition: all .2s ease-in-out;
+}
+
+.book-btn:hover {
+  background-color: #550000;
+  transition: all .2s ease-in-out;
+}
+
+.book-btn-detail {
+  text-decoration: none;
+  color: #fff;
+}
+
+.book-confirmation{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.non-contents{
+  text-align: center;
+  width: 100vw;
+  margin: 10px auto;
+}
+
+.my-lightgray{
+  color: #dddddd
+}
+
+.my-orange{
+  color: #ff6600
+}
+
+.good-count{
+  text-decoration: none;
+  font-size: 20px;
+  color: #bbbbbb;
+}
+
+.fa-thumbs-up{
+  text-decoration: none;
+}
+
+.start-end-time{
+  font-size: 3vw;
+}
+
+.book-price-memo{
+  font-size: 1.5vw;
+}
+
+.start-end-monthday{
+  font-size: 1.2vw;
+}
+
+.book-btn-link {
+  width: 100%;
+  background-image: url("maru2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  line-height: 0.01vw;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius : 10px;
+  padding: 1vw;
+  color: #fff;
+  transition: all .2s ease-in-out;
+}
+
+.book-btn-link:hover {
+  background-color: #550000;
+  transition: all .2s ease-in-out;
+}
+
+.book-btn-finished{
+  width: 100%;
+  background-image: url("check.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  line-height: 0.01vw;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius : 10px;
+  padding: 0.5vw 2vw;
+  color: #fff;
+  transition: all .2s ease-in-out;
+}
+
+.book-btn-finished:hover{
+ background-color: #333333;
+ transition: all .2s ease-in-out;
+}
+
+.book-btn-finished-user{
+  width: 100%;
+  background-image: url("check.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  line-height: 0.01vw;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius : 10px;
+  padding: 0.5vw 4.5vw;
+  color: #fff;
+  position: relative;
+}
+
+.fac-list > li.facility-contents{
+  position: relative;
+  margin-bottom: 2vw;
+}
+
+li.facility-contents ul.detail-drop-down{
+  position: absolute;
+  padding: 0vh;
+  background: #2c7cff;
+  border-right: 1px solid #eee;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  list-style: none;
+  transition: all .2s ease;
+  height: 0px;
+  border-radius : 10px;
+  text-align: center;
+  font-size: 1.5vw;
+}
+
+li.facility-contents:hover ul.detail-drop-down{
+  height: 2.5vw;
+}
+
+.drop-down-one{
+  text-decoration: none;
+  color: #fff;
+}
+
+
+.my-image-left{
+  font-size: 8vw;
+  position: absolute;
+  z-index: 100;
+  top: 1vw;
+  left: 2vw;
+  color: white
+}
+
+.my-image-right{
+  font-size: 8vw;
+  position: absolute;
+  z-index: 100;
+  right: 2vw;
+  top: 1vw;
+  color: white
+}
+
+.slider-show{
+width: 50vw;
+margin: auto;
+}
+
+.slide-image{
+  height: 30vw;
+  max-height: 65vh;
+  min-height: 20vh; 
+}

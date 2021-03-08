@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+
+  font-family: "Helvetica Neue",
+  Arial,
+  "Hiragino Kaku Gothic ProN",
+  "Hiragino Sans",
+  Meiryo,
+  sans-serif;
+
+  /*background-image: url("back1.png");*/
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-decoration: none;
+}
+
+a {
+  text-decoration:none; 
+}
+
+.header {
+  width: 100vw;
+  padding: 2vh 15vw;
+  display: flex;
+  flex-direction: column;
+  background-image: url("back3.png");
+}
+
+.search-bar-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-icon {
+  display: block;
+  margin-right: 1vw;
+  height: 6vw;
+  font-size: 4.5vw;
+  color: #440000;
+  text-decoration: none;
+  margin-bottom: 14px;
+  letter-spacing:-3px;
+  font-weight:800;
+  text-shadow:2px 0px 0 #cccccc,
+  0 2px 0 #cccccc,
+ -2px 0 0 #cccccc,
+ 0 -2px  #cccccc;
+ transition: all .2s ease-in-out;
+}
+
+.logo-icon:hover {
+  color: #888888;
+  text-shadow:0px 0px 0 #cccccc,
+  0 0px 0 #cccccc,
+ 0px 0 0 #cccccc,
+ 0 0px  #cccccc;
+ transition: all .2s ease-in-out;
+}
+
+.search-form {
+  width: 45vw;
+  height: 7vh;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.search-form>.input-box {
+  width: 100%;
+  height: 7vh;
+  padding-left: 10px;
+}
+
+.search-button {
+  width: 7vh;
+  border: 0;
+  cursor: pointer;
+  background-color: #deb887;
+  padding: 8px;
+  border-radius : 10px;
+  transition: all .2s ease-in-out;
+}
+.search-button:hover {
+  background-color: #660000;
+  transition: all .2s ease-in-out;
+}
+
+.search-icon {
+  width: 100%;
+}
+
+.nav {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1vh 0;
+  justify-content: flex-end;
+}
+
+.lists-right {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+  font-size: 2.5vw;
+}
+
+.login-header {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+.login-header:hover {
+  color: #888888;
+  transition: all .2s ease-in-out;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: #333333;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+.sign-up:hover {
+  color: #888888;
+  transition: all .2s ease-in-out;
+}
+
+.new-header {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+.new-header:hover {
+  color: #888888;
+  transition: all .2s ease-in-out;
+}
+
+.sign-out {
+  text-decoration: none;
+  color: #333333;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+.sign-out:hover {
+  color: #888888;
+  transition: all .2s ease-in-out;
+}
+
+/*  ここまでヘッダー  */
+
+/* フラッシュ ================================ */
+.flash {
+  padding: 10px 0;
+  color: #660000;
+  background: #deb887;
+  text-align: center;
+  top: 64px;
+  width: 100vw;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+}
+
+/*  z-index: 10;    position: absolute; */
+
+/*  ここからフッター  */
+
+.footer{
+  display: flex;
+  padding: 2vh 15vw;
+  width: 100vw;
+  justify-content: space-between;
+  background-image: url("back3.png");
+  color: white;
+}
+
+.footer-details{
+  display: flex;
+  list-style: none;
+  font-size: 1.5vw;
+}
+
+.footer-about{
+  margin-right: 3vw;
+  text-decoration: none;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+.footer-about:hover{
+  color: #888888;
+  transition: all .2s ease-in-out;
+}
+
+.footer-content-copy{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.copyright{
+  list-style: none;
+  font-size: 1.5vw;
+}
+
+

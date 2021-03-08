@@ -1,0 +1,29 @@
+.input-default-area {
+  width: 100%;
+  margin-top: 5px;
+  height: 100px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+  white-space: pre-wrap;
+}
+
+.resavation-delete{
+  padding: 2vh 15vw;
+  background-image: url("back3.png");
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  width: 100vw;
+}
+
+.delete-image{
+  display: flex;
+}
+
+.delete-image-one{
+  margin-right: 1vw;
+}
