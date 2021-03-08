@@ -1,0 +1,112 @@
+<div class="contents row">
+  <div class="container">
+    <h2>予約枠作成</h2>
+    <%= form_with(model:@book,url: post_books_path, local: true) do |f| %>
+     <%= render 'shared/error_messages', model: f.object %> 
+       
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">開始時間</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.datetime_field :start_time, class: "input-default" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">終了時間</label>
+          <span class="indispensable">必須</span>
+        </div>
+       <%= f.datetime_field :end_time, class:"input-default" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">料金（円）</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :price,  class:"input-default", placeholder:"1000" %>
+      </div>
+    </div>
+
+    <!--<div class="form-group">
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">メモ</label>
+        </div>
+        <%= f.text_field :memo,  class:"input-default", placeholder:"例）割引実施中" %>
+      </div>
+    </div>-->
+
+      <div class="sign-up">
+        <%= f.submit "予約枠を作成する",class:"sign-up-btn" %>        
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ <% if (@books.where(post_id: @post.id)).count != 0 %>
+
+   <div class="resavation-delete">
+    <strong>未予約枠削除</strong>
+  </div>
+    <div class="facility-list">
+    <% if @books.where(post_id: @post.id).count == 0 || @books.where(start_time: Time.now..Float::INFINITY ).count != 0  &&  @book_order.where(book_id: @bookid) == @bookid || (@book_orders & (@books.where(start_time: Time.now..Float::INFINITY ).ids)).count == ((@books.where(start_time: Time.now..Float::INFINITY ).ids)).count ||  @books.where(start_time: Time.now..Float::INFINITY ).count == 0%>
+       <p class="non-contents">現在削除可能な枠はありません</p>
+    <% else %>
+    
+      <% @books.each do |book| %>
+      <% if book.book_order == nil && Time.now.to_s(:datetime_jp) < book.start_time.to_s(:datetime_jp) %>
+        <ul class="fac-list">
+          <li class="facility-contents">
+            <div class="book-btn-link" >
+           <%= link_to post_book_path(book.post_id,book.id), method: :delete, data: {confirm: "予約枠を削除しますか？"}, class:"book-btn-detail" do %>
+              <% bst = book.start_time %>
+              <% est = book.end_time %>
+               <p class="start-end-monthday">
+                <%= bst.year.to_s(:datetime_jp) %>年
+                <%= bst.month.to_s(:datetime_jp) %>月
+                <%= bst.day.to_s(:datetime_jp) %>日<br></p>
+                <p class="start-end-time">
+                <%= bst.hour.to_s(:datetime_jp) %>時<%= bst.min.to_s(:datetime_jp) %>分~</p><br>
+               
+               <p class="start-end-monthday">
+                <%= est.month.to_s(:datetime_jp) %>月
+                <%= est.day.to_s(:datetime_jp) %>日<br></p>
+                <p class="start-end-time">
+                <%= est.hour.to_s(:datetime_jp) %>時<%= est.min.to_s(:datetime_jp) %>分</p><br>
+                <p class="book-price-memo">
+                ¥<%= book.price.to_s(:delimited) %><br>
+         <% end %> 
+            </div>
+          </li>
+        </ul>
+       <% end %>
+      <% end %>
+       <% end %>
+      <% end %>
+      </div>
+
+
+ <% if @books.where(post_id: @post.id).count != 0 %>
+   <div class="resavation-delete">
+    <strong>予約済枠削除・返金</strong>
+  </div>
+    <div class="facility-list">
+       <div class="fac-table">
+          <p class="table-btn"><%= link_to sort_post_books_path do %>
+              <button class="table-btn">予約済一覧を見る</button>
+            <% end %></p>
+        </div>
+     </div>
+   <% end %>
+       
+
+  
+
