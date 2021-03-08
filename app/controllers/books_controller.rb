@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :destroy, :order, :order_destroy, :move_to_index]
   before_action :authenticate_user!
-  before_action :move_to_index, only: [:destroy, :order_destroy, :new, :create, :sort, :sort_result]
+  before_action :move_to_index, only: [:destroy,:new, :create, :sort, :sort_result]
 
   def new
     @book = Book.new
