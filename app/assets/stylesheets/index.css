@@ -151,7 +151,7 @@
   background-image: url("back1.png");
   width: 100vw;
   background-size: cover;
-  margin-top: 2vh;
+  padding-top: 2vh;
 }
 
 .table-btn {
