@@ -1,0 +1,1 @@
+$("#goods_<%= @post.id %>").html("<%= j(render partial: 'goods/good', locals: {post: @post, goods_count: @goods_count}) %>");

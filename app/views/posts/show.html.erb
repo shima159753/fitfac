@@ -33,22 +33,9 @@
       </div>
       <% end %>
 
-      <%if user_signed_in? && current_user.id != @post.user_id %>
-      <% if Good.find_by(user_id: current_user.id, post_id: @post.id)  %>
-        <%= link_to "/goods/#{@post.id}/destroy",method: :post do %>
-          <span class="fas fa-thumbs-up my-orange"><a></a></span></a>
-          <a class="good-count"><%= @goods_count %></a>
-        <% end %>
-      <% else%>
-        <%= link_to "/goods/#{@post.id}/create", method: :post do %>
-            <span class="fas fa-thumbs-up my-lightgray"><a></a></span>
-           <a class="good-count"><%= @goods_count %></a>
-        <% end %>
-      <% end %>
-        <% else %>
-          <span class="fas fa-thumbs-up my-orange"><a></a></span></a>
-          <a class="good-count"><%= @goods_count %></a>
-      <% end %>
+    <div id="goods_<%= @post.id %>">
+      <%= render partial: "goods/good", locals:{ post:@post,goods_count:@goods_count } %>
+    </div>
       
 
       
