@@ -12,7 +12,7 @@
          <%= form_with(model:@contact,url: contacts_create_path, local: true) do |f| %>
            <%= render 'shared/error_messages', model: f.object %> 
             <%= f.label :お名前%><br>
-            <%= f.text_field :name, class:"input-default",placeholder:"お名前をご記入下さい" %><br>
+            <%= f.text_field :name, class:"input-default-contact",placeholder:"お名前をご記入下さい" %><br>
        </div>
     </div>
 
