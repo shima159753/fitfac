@@ -60,14 +60,21 @@ class PostsController < ApplicationController
 
   def search
     @posts = Kaminari.paginate_array(Post.search(params[:keyword]).reverse).page(params[:page]).per(4)
+    session["search"] = params[:keyword]
     selection = params[:sortword]
-    @post = Post.sort(selection)
   end
 
   def sort
     selection = params[:sortword]
-    @posts = Kaminari.paginate_array(Post.sort(selection)).page(params[:page]).per(2)
-    @post = Kaminari.paginate_array(Post.search(params[:keyword])).page(params[:page]).per(2)
+    if selection == 'new'
+      @posts = Kaminari.paginate_array(Post.search(session["search"]).reverse).page(params[:page]).per(4)
+    elsif selection == 'likes'
+      @posts = Kaminari.paginate_array(Post.find(Good.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))& (Post.search(session["search"]))).page(params[:page]).per(4)
+    else
+      @posts =  Kaminari.paginate_array(Post.search(session["search"])).page(params[:page]).per(4)
+    end
+   # @posts = Kaminari.paginate_array(Post.sort(selection)).page(params[:page]).per(2)
+   #@post = Kaminari.paginate_array(Post.search(params[:keyword])).page(params[:page]).per(2)
   end
 
   private

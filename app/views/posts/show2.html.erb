@@ -72,3 +72,6 @@
       <% end %>
       <% end %>
       
+      render partial: "post_sort", locals: { post: post }
+
+      @posts = Kaminari.paginate_array((Post.search(session["search"]) & Post.find(Good.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id)))).page(params[:page]).per(4)

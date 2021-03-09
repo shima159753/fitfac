@@ -41,14 +41,14 @@ class Post < ApplicationRecord
     end
   end
 
-  def self.sort(selection)
-    case selection
-    when 'new'
-      all.order(created_at: :DESC)
-    when 'old'
-      all.order(created_at: :ASC)
-    when 'likes'
-      find(Good.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
-    end
-  end
+  #def self.sort(selection)
+    #case selection
+    #when 'new'
+    #  all.order(created_at: :DESC)
+  # when 'old'
+   #   all.order(created_at: :ASC)
+   # when 'likes'
+    #  find(Good.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+   # end
+ # end
 end
