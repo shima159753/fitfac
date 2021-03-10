@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :show, :update, :destroy, :likes, :move_to_index]
+  before_action :set_post, only: [:edit, :show, :update, :destroy, :likes, :move_to_index,:map]
   before_action :authenticate_user!, except: [:index, :show, :search, :sort]
   before_action :move_to_index, except: [:index, :show, :search, :sort,:new,:create]
 
@@ -77,7 +77,12 @@ class PostsController < ApplicationController
    #@post = Kaminari.paginate_array(Post.search(params[:keyword])).page(params[:page]).per(2)
   end
 
+
   private
+
+  #def map_address
+   # params(:prefecture,:city,:address,:building_name)
+  #end
 
   def post_params
     params.require(:post).permit(:image, :name, :postal_code, :prefecture, :city, :address, :building_name, :price, :bus_hours, :text,

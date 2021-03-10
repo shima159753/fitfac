@@ -19,9 +19,9 @@
     <% end %>
 
 
-
+   <div class="fac-img-content">
     <% if @post.youtube_id.present? %>
-      <div style="position: relative; padding-bottom: 56.25%;">
+      <div style="position: relative; padding-bottom: 56.25%;", class="youtube">
         <iframe 
           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
           src="https://www.youtube.com/embed/<%= @post.youtube_id %>" 
@@ -32,11 +32,44 @@
         </iframe>
       </div>
       <% end %>
+  </div>
 
     <div id="goods_<%= @post.id %>">
       <%= render partial: "goods/good", locals:{ post:@post,goods_count:@goods_count } %>
     </div>
       
+
+  <div id="map" class="map-window"></div>
+
+
+<script type="text/javascript">
+  var map;
+  var marker;
+  var geocoder;
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+    'address': '<%= @post.prefecture+@post.city+@post.address+@post.building_name %>' 
+    }, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: results[0].geometry.location,
+        zoom: 17 //ズーム
+     });
+    marker = new google.maps.Marker({
+    position: results[0].geometry.location,
+    map: map
+    });
+
+    } else {
+      alert(status);
+    }
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_API_KEY']%>&callback=initMap" async></script>
+
+
 
       
 

@@ -281,7 +281,7 @@ li.facility-contents:hover ul.detail-drop-down{
 }
 
 .slider-show{
-width: 50vw;
+width: 60vw;
 margin: auto;
 }
 
@@ -289,4 +289,15 @@ margin: auto;
   height: 30vw;
   max-height: 65vh;
   min-height: 20vh; 
+}
+
+.youtube{
+  width: 60vw;
+  margin: auto;
+}
+
+.map-window{
+  width: 60vw;
+  height: 30vw;
+  margin: auto;
 }

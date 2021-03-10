@@ -24,10 +24,12 @@ Rails.application.routes.draw do
       get "search"
       get "sort"
     end
+    
   end      
   resources :users, only: [:show] do
     resources :cards, only: [:new, :create, :edit, :update]
   end
+  #get "/map_request", to: "posts#map", as: "map_request"
   post "goods/:post_id/create", to: "goods#create" 
   post "goods/:post_id/destroy", to: "goods#destroy"
   get "users/:id/goods", to: "users#goods"

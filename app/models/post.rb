@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :books, dependent: :destroy
-  has_one :good, dependent: :destroy
+  has_many :goods, dependent: :destroy
 
   has_one_attached :image
   has_many_attached :images
