@@ -27,7 +27,7 @@
 
 .facility-list-title{
   padding: 2vh 15vw;
-  background-image: url("back3.png");
+  background-color: hsl(0, 28%, 19%);
   color: white;
   font-size: 35px;
   text-align: center;
@@ -35,7 +35,7 @@
 }
 
 .facility-table{
-  background-image: url("back1.png");
+  background-color: #eec999;
   width: 100vw;
   background-size: cover;
 }
@@ -51,7 +51,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
-  background-image: url("back1.png");
+  background-color: #eec999;
   background-size: cover;
   justify-content: space-around;
 }
@@ -148,7 +148,7 @@
 .fac-table{
   margin: auto;
   padding-bottom: 2vw;
-  background-image: url("back1.png");
+  background-color: #eec999;
   width: 100vw;
   background-size: cover;
   padding-top: 2vh;
@@ -216,7 +216,7 @@
 }
 
 .facility-table-sort{
-  background-image: url("back1.png");
+  background-color: #eec999;
   background-size: cover;
   width: 100vw;
 }
