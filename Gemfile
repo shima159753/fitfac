@@ -68,3 +68,6 @@ end
 gem "jquery-rails"
 gem "geocoder"
 gem "aws-sdk-s3", require: false
+group :production do
+  gem 'unicorn', '5.4.1'
+end
