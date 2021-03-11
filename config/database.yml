@@ -53,5 +53,6 @@ test:
 production:
   <<: *default
   database: fitfac_production
-  username: fitfac
-  password: <%= ENV['FITFAC_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
