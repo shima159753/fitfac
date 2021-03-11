@@ -22,7 +22,7 @@
 
 .detail-fac {
   width: 20vw;
-  background-color: #eec999;
+  background-color: #deb887;
   border: 1px solid #deb887;
   font-size: 14px;
   text-align: center;
@@ -39,7 +39,7 @@
 
 .facility-resavation{
   padding: 2vh 15vw;
-  background-color: hsl(0, 28%, 19%);
+  background-image: url("back3.png");
   color: white;
   font-size: 35px;
   text-align: center;
@@ -129,7 +129,7 @@
 }
 
 .book-btn:hover {
-  background-color: hsl(0, 28%, 19%);
+  background-color: #550000;
   transition: all .2s ease-in-out;
 }
 
