@@ -94,6 +94,11 @@ https://gyazo.com/53b96f2b302be2aa50f249ab3467914c
 スマホサイズでも崩れないように実装
 https://gyazo.com/4540e40f97ee17d2cc29afeabf6afa00  
 
+- GoogleMap実装    
+それぞれの店舗の場所がわかるようにGoogleMapのAPIを導入
+https://gyazo.com/4c938195f8f091e512a75210e8507c93
+入力した住所からその場所にピンが刺さる仕様
+
 - お気に入り、いいねの非同期実装   
 ユーザーは店舗毎にお気に入りとして登録できる
 https://gyazo.com/dd3d7648703bd0a60b9cbea953f99d4e  
@@ -128,14 +133,46 @@ activemailerによる送信機能の実装
 使用できる仕様になるように設計
 - 検索に関して検索ワードを引き継いでソートできるように実装
 - 予約済、未予約をわかりやすく実装
+- 店舗詳細にyoutube_idやgoogleMapなど多くのツールで紹介できるように実装
 
 # 今後実装したい機能
 - 予約の定員制機能
 - SNSのシェア機能
 
+# 開発環境
+
+## バックエンド
+Ruby,Ruby on Rails
+
+## フロントエンド
+HTML,CSS,JavaScript,jQuery,Ajax
+
+## データベース
+MySQL
+
+## インフラ
+AWS(S3)
+
+## 本番環境
+heroku
+
+## ソース管理
+GitHub,GitHubDesktop
+
+## テスト
+RSpec
+
+## 使用API
+PAY.JP
+Maps JavaScript API
+GeocodingAPI
+
+## エディタ
+VSCode
+
 # テーブル設計
 
-# users テーブル
+## users テーブル
 
 | Column              | Type     | Options                   |               
 | ------------------- | -------- | ------------------------- |
@@ -249,5 +286,3 @@ activemailerによる送信機能の実装
 - ruby 2.6.5
 - rails 6.0.3.5
 - mysql 5.6.51
-
-git cloneしてから、ローカルで動作をさせるまでに必要なコマンドを記述しましょう。この時、アプリケーション開発に使用した環境を併記することを忘れないでください（パッケージやRubyのバージョンなど）。

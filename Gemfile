@@ -67,3 +67,4 @@ group :development do
 end
 gem "jquery-rails"
 gem "geocoder"
+gem "aws-sdk-s3", require: false
