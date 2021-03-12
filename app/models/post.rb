@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   validates :postal_code, :prefecture, :city, :address, :price, :bus_hours, :text, :item, :image, presence: true
   validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'は無効です。ハイフン（-）を含めて下さい' }
 
-  validates :name, presence: true, length: { maximum: 10 }
+  validates :name, presence: true, length: { maximum: 15 }
 
   belongs_to :user
   has_many :books, dependent: :destroy
