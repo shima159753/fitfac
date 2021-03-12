@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @books = @post.books.all
+    @books = @post.books.all.order('created_at DESC')
     @book = Book.find_by(params[:book_id])
     @book_order = BookOrder.all
     @book_orders = BookOrder.pluck(:book_id)
