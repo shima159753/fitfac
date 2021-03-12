@@ -1,12 +1,12 @@
 
     <% goods_count = Good.where(post_id: post.id).count %>
     <ul class="fac-list">
-      <li class="facility-contents">
+      <li class="facility-contents-text">
       <div class="facility-image">
         <%= link_to image_tag(post.image, class:"gym1-image" ) , post_path(post.id) %>
       <div class="facility-body">
       <%= link_to post.name, post_path(post.id), class:"facility-title"%>
-      <%= link_to post.text, post_path(post.id),  class:"facility-copy"%>
+      <%= link_to post.text, post_path(post.id),  class:"facility-copy-text"%>
       <%= link_to post_path(post.id),  class:"facility-good" do%>
           <a class="good-count-index"><%= goods_count %></a>
           <span class="fas fa-thumbs-up my-orange my-index"><a></a></span>
