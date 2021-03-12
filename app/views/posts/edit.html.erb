@@ -2,6 +2,7 @@
   <div class="container">
     <h2>出店情報編集</h2>
     <%= form_with(model:@post, local: true) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %> 
 
 
     <div class="form-group">
@@ -47,7 +48,7 @@
     <div class="form-group">
       <div class="field">
         <div class='form-text-wrap'>
-          <label class="form-text">店舗名（10文字以内）</label>
+          <label class="form-text">店舗名（15文字以内）</label>
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :name,  class:"input-default", placeholder:"", placeholder:"例）新宿店" %>
