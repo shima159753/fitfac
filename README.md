@@ -151,10 +151,10 @@ HTML,CSS,JavaScript,jQuery,Ajax
 MySQL
 
 ## インフラ
-AWS(S3)
+AWS(EC2),Capistrano
 
 ## 本番環境
-heroku
+Nginx
 
 ## ソース管理
 GitHub,GitHubDesktop
@@ -280,9 +280,3 @@ VSCode
 | name              | string     | null: false, foreign_key: true |
 | message           | text       | null: false, foreign_key: true |
 
-
-# ローカルでの動作方法
-
-- ruby 2.6.5
-- rails 6.0.3.5
-- mysql 5.6.51
