@@ -116,7 +116,7 @@
 
 .book-btn {
   width: 100%;
-  background-image: url("maru2.png");
+  background-color: hsl(0, 28%, 19%);
   background-size: cover;
   background-repeat: no-repeat;
   line-height: 3vw;
@@ -181,7 +181,7 @@
 
 .book-btn-link {
   width: 100%;
-  background-image: url("maru2.png");
+  background-color: hsl(0, 28%, 19%);
   background-size: cover;
   background-repeat: no-repeat;
   line-height: 0.01vw;
@@ -200,7 +200,7 @@
 
 .book-btn-finished{
   width: 100%;
-  background-image: url("check.png");
+  background-color: rgba(92, 92, 90, 0.623);
   background-size: cover;
   background-repeat: no-repeat;
   line-height: 0.01vw;
@@ -219,7 +219,7 @@
 
 .book-btn-finished-user{
   width: 100%;
-  background-image: url("check.png");
+  background-color: rgba(92, 92, 90, 0.623);
   background-size: cover;
   background-repeat: no-repeat;
   line-height: 0.01vw;
