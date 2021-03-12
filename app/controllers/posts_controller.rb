@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.find_by(params[:id])
-    @posts = Post.all.order('created_at DESC')
+    @posts = Post.all.order('start_time DESC')
     @goods_count = Good.where(post_id: @post).count
   end
 
