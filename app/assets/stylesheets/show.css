@@ -116,7 +116,7 @@
 
 .book-btn {
   width: 100%;
-  background-image: image-url("maru2.png");
+  background-image: url("maru2.png");
   background-size: cover;
   background-repeat: no-repeat;
   line-height: 3vw;
