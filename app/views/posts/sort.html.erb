@@ -8,11 +8,12 @@
 
      <%= f.submit "並び替える", class:"sort-box" %>
    <% end %>
-
-  <div class="facility-list">
+  <div class="facility-table">
+  <div class="facility-list-index">
     <% @posts.each do |post| %>
       <%= render partial: "post", locals: { post: post }%>
     <% end %>
+  </div>
   </div>
   <div class="paginate">
     <%= paginate @posts %>
