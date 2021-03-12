@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.find_by(params[:id])
-    @posts = Post.all.order('start_time DESC')
+    @posts = Post.all.order('created_at DESC')
     @goods_count = Good.where(post_id: @post).count
   end
 
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @books = @post.books.all.order('created_at DESC')
+    @books = @post.books.all.order('start_time ASC')
     @book = Book.find_by(params[:book_id])
     @book_order = BookOrder.all
     @book_orders = BookOrder.pluck(:book_id)
