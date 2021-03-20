@@ -36,7 +36,8 @@
 
 ### 基本機能とDEMO
 - 基本情報登録ページからクレジット情報登録ページへのウィザード形式の会員登録  
-  - 情報登録ページからクレジット情報登録ページへ  
+  - 情報登録ページからクレジット情報登録ページへ 
+  https://user-images.githubusercontent.com/74998207/111864827-9ad29300-89a6-11eb-8d12-796669aea7d2.gif
   https://gyazo.com/e8b4700cc0cc399e10a176f5c4098010.gif  
   - クレジット情報登録から登録完了ページへ  
   https://gyazo.com/4f38890deb7847d03a496f057a5cc322.gif  
