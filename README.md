@@ -39,13 +39,16 @@
   - 情報登録ページからクレジット情報登録ページへ 
 ![e8b4700cc0cc399e10a176f5c4098010](https://user-images.githubusercontent.com/74998207/111865046-ffdab880-89a7-11eb-8bcc-38f8c4b534df.gif)  
 
+
   - クレジット情報登録から登録完了ページへ  
  ![2](https://user-images.githubusercontent.com/74998207/111865202-ec7c1d00-89a8-11eb-9d0d-ef84ab2fb148.gif) 
   ユーザーの情報登録を項目毎にわかりやすくする為、deviseコントローラーの変更で実装
 
+
 - 出店機能          
 ユーザーが店舗情報を入力し、店舗情報を出店する  
-https://gyazo.com/e09722a7de3f56ce524658af2ea04c9c.gif  
+![3](https://user-images.githubusercontent.com/74998207/111866728-df642b80-89b2-11eb-8723-d43abb9ebfa4.gif)
+
 
 - 時間予約、購入機能                                   
   - 店舗管理ユーザーが予約券発行  
