@@ -37,7 +37,7 @@
 ### 基本機能とDEMO
 - 基本情報登録ページからクレジット情報登録ページへのウィザード形式の会員登録  
   - 情報登録ページからクレジット情報登録ページへ 
-![e8b4700cc0cc399e10a176f5c4098010](https://user-images.githubusercontent.com/74998207/111865046-ffdab880-89a7-11eb-8bcc-38f8c4b534df.gif) 
+![e8b4700cc0cc399e10a176f5c4098010](https://user-images.githubusercontent.com/74998207/111865046-ffdab880-89a7-11eb-8bcc-38f8c4b534df.gif)   
   - クレジット情報登録から登録完了ページへ  
  ![2](https://user-images.githubusercontent.com/74998207/111865202-ec7c1d00-89a8-11eb-9d0d-ef84ab2fb148.gif) 
   ユーザーの情報登録を項目毎にわかりやすくする為、deviseコントローラーの変更で実装
