@@ -10,7 +10,7 @@
 
 # URL
 
-- [RentSpace](https://fitfac.herokuapp.com/)
+- [RentSpace](http://13.112.31.51/)
 
 # テスト用アカウント
 
