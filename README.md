@@ -74,7 +74,7 @@
 ### 検索、ソート関連
 - 店舗検索機能  
 店舗に関するキーワードを入れるとワードに合う店舗が検索される             
-![9](https://user-images.githubusercontent.com/74998207/111887923-a7dd9980-8a1b-11eb-8bad-cb5f028a8554.gif) 
+![9](https://user-images.githubusercontent.com/74998207/111887923-a7dd9980-8a1b-11eb-8bad-cb5f028a8554.gif)  
 postテーブル全体でのワード検索ができる
 
 - 検索ページのページング機能
@@ -89,7 +89,7 @@ postテーブル全体でのワード検索ができる
 
 - 予約済み一覧のソート機能                         
 過去分も含め予約済枠を一覧で確認でき、並び替えができる
-![12](https://user-images.githubusercontent.com/74998207/111898353-c6b64d00-8a68-11eb-89b3-ec70c21f2101.gif)
+![12](https://user-images.githubusercontent.com/74998207/111898353-c6b64d00-8a68-11eb-89b3-ec70c21f2101.gif)  
 新しい順、古い順に並び替える
 
 ### その他実装
@@ -99,27 +99,27 @@ postテーブル全体でのワード検索ができる
 
 - GoogleMap実装    
 それぞれの店舗の場所がわかるようにGoogleMapのAPIを導入  
-![14](https://user-images.githubusercontent.com/74998207/111898648-c61eb600-8a6a-11eb-9827-3c584cb0de15.gif)
+![14](https://user-images.githubusercontent.com/74998207/111898648-c61eb600-8a6a-11eb-9827-3c584cb0de15.gif)  
 入力した住所からその場所にピンが刺さる仕様
 
 - お気に入り、いいねの非同期実装   
 ユーザーは店舗毎にお気に入りとして登録できる  
-![15](https://user-images.githubusercontent.com/74998207/111898734-2f9ec480-8a6b-11eb-8ee9-e97393ed7bea.gif)
+![15](https://user-images.githubusercontent.com/74998207/111898734-2f9ec480-8a6b-11eb-8ee9-e97393ed7bea.gif)  
 お気に入りに登録した店舗はマイページで確認できる
 
 - Q&Aのモーダル、アコーディオン実装   
 ヘッダー部分のQ&Aからアクセスできる  
-![16](https://user-images.githubusercontent.com/74998207/111898823-a340d180-8a6b-11eb-9175-2a9bb3736a7d.gif)
+![16](https://user-images.githubusercontent.com/74998207/111898823-a340d180-8a6b-11eb-9175-2a9bb3736a7d.gif)  
 ページ変遷なしで確認できる
 
 - お問い合わせページから管理者へメール受信  
 ヘッダーから疑問やご意見を管理者へ送信できる  
-![17](https://user-images.githubusercontent.com/74998207/111898869-05013b80-8a6c-11eb-9158-27241d748deb.gif)
+![17](https://user-images.githubusercontent.com/74998207/111898869-05013b80-8a6c-11eb-9158-27241d748deb.gif)  
 activemailerによる受信機能の実装
 
 - 会員登録後、メール送信   
 会員登録完了後、登録メールに登録メールが送られる
-![18](https://user-images.githubusercontent.com/74998207/111898958-9d97bb80-8a6c-11eb-8016-ae6ecbe4a57e.gif)
+![18](https://user-images.githubusercontent.com/74998207/111898958-9d97bb80-8a6c-11eb-8016-ae6ecbe4a57e.gif)  
 activemailerによる送信機能の実装
 
 - 施設画像の複数投稿  
